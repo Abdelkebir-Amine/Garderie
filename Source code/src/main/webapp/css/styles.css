@@ -1,0 +1,72 @@
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 60px;
+    background-color: #f2f2f2;
+    padding: 0 20px;
+}
+
+.company a {
+    font-weight: bold;
+    font-size: 24px;
+    color: #333;
+    text-decoration: none;
+}
+
+.navigation ul {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.navigation li {
+    margin: 0 15px;
+    position: relative;
+}
+
+.navigation a {
+    font-size: 16px;
+    color: #333;
+    text-decoration: none;
+}
+
+.sub-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    padding: 10px;
+    z-index: 1;
+}
+
+.sub-menu li {
+    margin: 5px 0;
+}
+
+.navigation li:hover .sub-menu {
+    display: block;
+}
+
+.user {
+    display: flex;
+    align-items: center;
+}
+
+.user span {
+    margin-right: 10px;
+    font-size: 16px;
+    color: #333;
+}
+
+.user button {
+    font-size: 16px;
+    background-color: transparent;
+    border: none;
+    color: #333;
+    cursor: pointer;
+}

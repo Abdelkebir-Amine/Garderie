@@ -1,0 +1,66 @@
+CREATE DATABASE garderie;
+
+USE garderie;
+
+CREATE TABLE garderie (
+  code_fiscal VARCHAR(50) NOT NULL,
+  nom VARCHAR(50) NOT NULL,
+  adresse VARCHAR(255) NOT NULL,
+  telephone VARCHAR(20) NOT NULL,
+  mail VARCHAR(50) NOT NULL,
+  PRIMARY KEY (code_fiscal)
+);
+
+CREATE TABLE classe (
+  id INT NOT NULL AUTO_INCREMENT,
+  nom VARCHAR(50) NOT NULL,
+  PRIMARY KEY (id)
+);
+
+CREATE TABLE eleve (
+  id INT NOT NULL AUTO_INCREMENT,
+  nom VARCHAR(50) NOT NULL,
+  prenom VARCHAR(50) NOT NULL,
+  pere_prenom VARCHAR(50) NOT NULL,
+  grand_pere_prenom VARCHAR(50) NOT NULL,
+  mere_nom VARCHAR(50) NOT NULL,
+  mere_prenom VARCHAR(50) NOT NULL,
+  pere_cin VARCHAR(20) NOT NULL,
+  pere_telephone VARCHAR(20) NOT NULL,
+  date_naissance VARCHAR(20) NOT NULL,
+  adresse VARCHAR(255) NOT NULL,
+  image LONGBLOB,
+  niveau_scolaire INT NOT NULL,
+  PRIMARY KEY (id),
+  FOREIGN KEY (niveau_scolaire) REFERENCES classe(id)
+);
+
+CREATE TABLE employe (
+  cin VARCHAR(20) NOT NULL,
+  nom VARCHAR(50) NOT NULL,
+  prenom VARCHAR(50) NOT NULL,
+  telephone VARCHAR(20) NOT NULL,
+  pere_prenom VARCHAR(50) NOT NULL,
+  date_naissance VARCHAR(20) NOT NULL,
+  adresse VARCHAR(255) NOT NULL,
+  motDePasse VARCHAR(255) NOT NULL,
+  image LONGBLOB,
+  is_directeur BOOLEAN NOT NULL DEFAULT false,
+  PRIMARY KEY (cin)
+);
+
+CREATE TABLE activite (
+  code INT NOT NULL AUTO_INCREMENT,
+  designation VARCHAR(50) NOT NULL,
+  employe_cin VARCHAR(20) NOT NULL,
+  PRIMARY KEY (code),
+  FOREIGN KEY (employe_cin) REFERENCES employe(cin)
+);
+
+CREATE TABLE classe_activite (
+  id INT PRIMARY KEY AUTO_INCREMENT,
+  classe_id INT NOT NULL,
+  activite_code INT NOT NULL,
+  FOREIGN KEY (classe_id) REFERENCES classe(id),
+  FOREIGN KEY (activite_code) REFERENCES activite(code)
+);
