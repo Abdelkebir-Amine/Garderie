@@ -1,3 +1,3 @@
-# Garderie
+# About "Garderie"
 School management Web application. <br>
-PS: Application for a French client.
+PS: The application for a French customer.
